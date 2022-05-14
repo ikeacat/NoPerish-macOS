@@ -1,13 +1,14 @@
 //
-//  ViewController.swift
+//  LandingViewController.swift
 //  NoPerish
 //
-//  Created by Mason Frykman on 5/10/22.
+//  The project, NoPerish, which includes and is not limited to this source code file is licensed under the GNU General Public License v3.0
+//  Get a copy at https://www.gnu.org/licenses/gpl-3.0.en.html or in the included LICENSE file.
 //
 
 import AppKit
 
-class ViewController: NSViewController, CredentialEntranceDelegate {
+class LandingViewController: NSViewController, CredentialEntranceDelegate {
     
     override func loadView() {
         view = NSView(frame: CGRect(x: 0, y: 0, width: 600, height: 300))
@@ -72,7 +73,7 @@ class ViewController: NSViewController, CredentialEntranceDelegate {
         
     }
     
-    @objc private func toInstall(_ sender: Any) {
+    @objc func toInstall(_ sender: Any) {
         let crView = CredentialEntranceViewController()
         crView.delegate = self
         crView.upperTitle = "Install"

@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9314B525282B38600009345E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9314B524282B38600009345E /* AppDelegate.swift */; };
-		9314B527282B38600009345E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9314B526282B38600009345E /* ViewController.swift */; };
+		9314B527282B38600009345E /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9314B526282B38600009345E /* LandingViewController.swift */; };
 		9314B529282B38620009345E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9314B528282B38620009345E /* Assets.xcassets */; };
 		9314B534282B38850009345E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9314B533282B38850009345E /* main.swift */; };
+		935ADA50282F4C7000FA8132 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 935ADA4F282F4C7000FA8132 /* LICENSE */; };
 		93C42A37282C783700130186 /* AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C42A36282C783700130186 /* AppMenu.swift */; };
 		93C42A3A282C7C0F00130186 /* CredentialsView+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C42A39282C7C0F00130186 /* CredentialsView+Delegate.swift */; };
 /* End PBXBuildFile section */
@@ -18,10 +19,11 @@
 /* Begin PBXFileReference section */
 		9314B521282B38600009345E /* NoPerish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoPerish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9314B524282B38600009345E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9314B526282B38600009345E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9314B526282B38600009345E /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		9314B528282B38620009345E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9314B52D282B38620009345E /* NoPerish.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoPerish.entitlements; sourceTree = "<group>"; };
 		9314B533282B38850009345E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		935ADA4F282F4C7000FA8132 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		93C42A36282C783700130186 /* AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenu.swift; sourceTree = "<group>"; };
 		93C42A39282C7C0F00130186 /* CredentialsView+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CredentialsView+Delegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,6 +64,7 @@
 				93C42A36282C783700130186 /* AppMenu.swift */,
 				9314B528282B38620009345E /* Assets.xcassets */,
 				9314B52D282B38620009345E /* NoPerish.entitlements */,
+				935ADA4F282F4C7000FA8132 /* LICENSE */,
 			);
 			path = NoPerish;
 			sourceTree = "<group>";
@@ -70,7 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				93C42A39282C7C0F00130186 /* CredentialsView+Delegate.swift */,
-				9314B526282B38600009345E /* ViewController.swift */,
+				9314B526282B38600009345E /* LandingViewController.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -133,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				935ADA50282F4C7000FA8132 /* LICENSE in Resources */,
 				9314B529282B38620009345E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,7 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9314B527282B38600009345E /* ViewController.swift in Sources */,
+				9314B527282B38600009345E /* LandingViewController.swift in Sources */,
 				93C42A3A282C7C0F00130186 /* CredentialsView+Delegate.swift in Sources */,
 				9314B525282B38600009345E /* AppDelegate.swift in Sources */,
 				93C42A37282C783700130186 /* AppMenu.swift in Sources */,
