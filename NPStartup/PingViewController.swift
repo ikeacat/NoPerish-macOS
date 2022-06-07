@@ -56,7 +56,7 @@ class PingViewController: NSViewController {
         
         let credChk = fman.fileExists(atPath: "\(fman.homeDirectoryForCurrentUser.path)/Library/Application Support/NoPerish/credentials.conf")
         if(!credChk) {
-            self.errorPing("Credentials file does not exist!")
+            self.errorPing("Credentials file does not exist! Consider reinstalling?")
             return
         }
 

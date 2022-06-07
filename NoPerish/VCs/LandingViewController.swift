@@ -28,7 +28,9 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
         title.font = .systemFont(ofSize: 40, weight: .bold)
         title.translatesAutoresizingMaskIntoConstraints = false
         
-        let versionCaption = NSTextField(labelWithString: "Version 1.0")
+        let versionCapt = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Some version"
+        
+        let versionCaption = NSTextField(labelWithString: "Version \(versionCapt)")
         versionCaption.font = .systemFont(ofSize: 18, weight: .light)
         versionCaption.translatesAutoresizingMaskIntoConstraints = false
         
@@ -160,7 +162,7 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
         if(submitJob) {
             let alert = NSAlert()
             alert.messageText = "Success!"
-            alert.informativeText = "Failed to write credentials to file."
+            alert.informativeText = "Successfully installed NoPerish!!! (F.Y.I: The Startup app may pop up with an error 'HTTP Status code was not 200 (Was 409)', this is normal.)"
             alert.alertStyle = .informational
             alert.addButton(withTitle: "OK")
             alert.runModal()
