@@ -146,7 +146,7 @@ class CredentialEntranceViewController: NSViewController {
                         self.delegate?.credentialsFinished(self, nation: self.nationField.stringValue, password: autologin!, alreadyVerified: true)
                     }
                 } else {
-                    NSLog("http response for verifyCredentials was not 200. (Not OK!!!)")
+                    NSLog("http response for verifyCredentials was not 200. (Not OK!!!) (was \(htresp!.statusCode)")
                     self.delegate?.credentialsFailed(self, error: nil)
                 }
             } else {

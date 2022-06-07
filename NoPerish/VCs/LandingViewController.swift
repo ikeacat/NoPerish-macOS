@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import ServiceManagement
 
 class LandingViewController: NSViewController, CredentialEntranceDelegate {
     
@@ -83,6 +84,13 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
     }
     
     func credentialsFinished(_ viewController: CredentialEntranceViewController, nation: String, password: String, alreadyVerified: Bool) {
+        
+        // *********************
+        // *  PASS BACK CHECK  *
+        // *********************
+        // Dismisses credential sheet
+        // Ensures password is autologin.
+        
         // Credentials sheet is no longer useful.
         if(crView == nil) {
             // This shouldn't be called if that view is nil.
@@ -109,21 +117,13 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
         
         let fman = FileManager()
         
-        let libCheck = fman.fileExists(atPath: "") // Check for existing Library folder.
+        print(fman.homeDirectoryForCurrentUser.path)
+        let libCheck = fman.fileExists(atPath: "\(fman.homeDirectoryForCurrentUser.path)/Library/Application Support/NoPerish") // Check for existing Library folder.
         if(!libCheck) {
-            let dirurl = URL(string: "Library/Application Support/NoPerish", relativeTo: fman.homeDirectoryForCurrentUser)
-            if(dirurl == nil) {
-                let alert = NSAlert()
-                alert.messageText = "Error"
-                alert.informativeText = "Failed to create NoPerish Library URL object."
-                alert.alertStyle = .critical
-                alert.addButton(withTitle: "OK")
-                alert.runModal()
-                return
-            }
+            let dirurl = URL(fileURLWithPath: "\(fman.homeDirectoryForCurrentUser.path)/Library/Application Support/NoPerish")
             
             do {
-                try fman.createDirectory(at: dirurl!, withIntermediateDirectories: false) // Create the directory.
+                try fman.createDirectory(at: dirurl, withIntermediateDirectories: false) // Create the directory.
             } catch {
                 let alert = NSAlert()
                 alert.messageText = "Error"
@@ -154,13 +154,26 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
         // *************
         // *  UTILITY  *
         // *************
-        // Writes utility to the same library folder as before.
-        // Enables utility for login using SMJobBless
+        // Enables Utility as login item.
         
-        
-        
-        
-        
+        let submitJob = SMLoginItemSetEnabled("eu.masonfrykman.NPStartup" as CFString, true)
+        if(submitJob) {
+            let alert = NSAlert()
+            alert.messageText = "Success!"
+            alert.informativeText = "Failed to write credentials to file."
+            alert.alertStyle = .informational
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+            return
+        } else {
+            let alert = NSAlert()
+            alert.messageText = "Error"
+            alert.informativeText = "Failed to enable utility as login item."
+            alert.alertStyle = .critical
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+            return
+        }
     }
 
 }
