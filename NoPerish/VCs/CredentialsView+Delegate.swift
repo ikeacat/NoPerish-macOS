@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import Foundation
 
 // MARK: View Controller
 
@@ -42,7 +43,7 @@ class CredentialEntranceViewController: NSViewController {
         passwordField.translatesAutoresizingMaskIntoConstraints = false
         passwordField.contentType = .password
         
-        submit = NSButton(title: "Submit", target: nil, action: nil)
+        submit = NSButton(title: "Submit", target: nil, action: #selector(hitSubmit(_:)))
         submit.translatesAutoresizingMaskIntoConstraints = false
         submit.bezelColor = NSColor.systemBlue
         
@@ -87,6 +88,9 @@ class CredentialEntranceViewController: NSViewController {
         passwordField.isEnabled = false
         
         if(nationField.stringValue.isEmpty || passwordField.stringValue.isEmpty) {
+            NSLog("empty.")
+            print(nationField.stringValue)
+            print(passwordField.stringValue)
             nationField.backgroundColor = .red
             passwordField.backgroundColor = .red
             submit.isEnabled = true
@@ -98,10 +102,59 @@ class CredentialEntranceViewController: NSViewController {
         
         let askDelForVerify = delegate?.shouldDoServerAuthenticationInViewController(self)
         if(askDelForVerify != false) { // Will trigger if true or delegate is nil (default is true)
-            
+            verifyCredentials()
         } else {
             // was false, just pass values back.
+            delegate?.credentialsFinished(self, nation: nationField.stringValue, password: passwordField.stringValue, alreadyVerified: false)
         }
+    }
+    
+    func verifyCredentials() {
+        let url = URL(string: "https://www.nationstates.net/cgi-bin/api.cgi")
+        if(url == nil) {
+            // TODO: Handle URL failure.
+        }
+        var request = URLRequest(url: url!)
+        request.addValue(passwordField.stringValue, forHTTPHeaderField: "X-Password")
+        request.addValue("NoPerish for macOS <mfryk268@gmail.com>", forHTTPHeaderField: "User-Agent")
+        request.httpMethod = "POST"
+        
+        let encodedSpaces = nationField.stringValue.replacingOccurrences(of: " ", with: "+")
+        request.httpBody = "nation=\(encodedSpaces)&q=ping".data(using: .utf8)
+        
+        let session = URLSession.shared.dataTask(with: request) { data, response, error in
+            if(error != nil) {
+                self.delegate?.credentialsFailed(self, error: error)
+                return;
+            }
+            
+            let htresp = response as? HTTPURLResponse
+            if(htresp != nil) {
+                if(htresp!.statusCode == 200) {
+                    // Check for X-Autologin header.
+                    let autologin = htresp!.value(forHTTPHeaderField: "X-Autologin")
+                    if(autologin == nil) {
+                        // Status code was ok but no autologin header??? weird.
+                        // This passes back the credentials as a "success" but alreadyVerified is false. Password param is the plaintext pwd.
+                        DispatchQueue.main.async {
+                            self.delegate?.credentialsFinished(self, nation: self.nationField.stringValue, password: self.passwordField.stringValue, alreadyVerified: false)
+                        }
+                        return
+                    }
+                    // Autologin was passed back, this means everything should be okay!!!
+                    DispatchQueue.main.async {
+                        self.delegate?.credentialsFinished(self, nation: self.nationField.stringValue, password: autologin!, alreadyVerified: true)
+                    }
+                } else {
+                    NSLog("http response for verifyCredentials was not 200. (Not OK!!!)")
+                    self.delegate?.credentialsFailed(self, error: nil)
+                }
+            } else {
+                self.delegate?.credentialsFailed(self, error: nil)
+            }
+        }
+        
+        session.resume()
     }
     
 }
@@ -112,15 +165,16 @@ protocol CredentialEntranceDelegate {
     
     // Sends the credentials back to the main view controller.
     // alreadyVerified MUST be false if shouldDoServerAuthenticationInViewController is false.
+    // if alreadyVerified is true, the password parameter is the autologin header.
     func credentialsFinished(_ viewController: CredentialEntranceViewController, nation: String, password: String, alreadyVerified: Bool) // REQUIRED
     
-    // Called every time credential verify failed. This will never be used if shouldDoServerAuthenticationInViewController is false, thus it's optional.
-    func credentialsFailed(_ viewController: CredentialEntranceViewController) // Optional, default empty.
+    // Called every time credential verify failed. This will never be used if shouldDoServerAuthenticationInViewController is false, thus it's optional. Also has an error field if it failed because of an error check.
+    func credentialsFailed(_ viewController: CredentialEntranceViewController, error: Error?) // Optional, default empty.
     
     func shouldDoServerAuthenticationInViewController(_ viewController: CredentialEntranceViewController) -> Bool // default: true
 }
 
 extension CredentialEntranceDelegate {
-    func credentialsFailed(_ viewController: CredentialEntranceViewController) {}
+    func credentialsFailed(_ viewController: CredentialEntranceViewController, error: Error?) {}
     func shouldDoServerAuthenticationInViewController(_ viewController: CredentialEntranceViewController) -> Bool {return true}
 }

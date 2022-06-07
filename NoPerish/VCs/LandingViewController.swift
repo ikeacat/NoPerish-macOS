@@ -10,6 +10,8 @@ import AppKit
 
 class LandingViewController: NSViewController, CredentialEntranceDelegate {
     
+    var crView: CredentialEntranceViewController?
+    
     override func loadView() {
         view = NSView(frame: CGRect(x: 0, y: 0, width: 600, height: 300))
     }
@@ -74,14 +76,91 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
     }
     
     @objc func toInstall(_ sender: Any) {
-        let crView = CredentialEntranceViewController()
-        crView.delegate = self
-        crView.upperTitle = "Install"
-        presentAsSheet(crView)
+        crView = CredentialEntranceViewController()
+        crView!.delegate = self
+        crView!.upperTitle = "Install"
+        presentAsSheet(crView!)
     }
     
     func credentialsFinished(_ viewController: CredentialEntranceViewController, nation: String, password: String, alreadyVerified: Bool) {
-        return
+        // Credentials sheet is no longer useful.
+        if(crView == nil) {
+            // This shouldn't be called if that view is nil.
+            return
+        }
+        crView!.dismiss(nil)
+        
+        if(!alreadyVerified) {
+            // Failed to obtain autologin alert.
+            let alert = NSAlert()
+            alert.messageText = "Error"
+            alert.informativeText = "Failed to obtain autologin (encrypted password). Please try again."
+            alert.alertStyle = .critical
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+            return
+        }
+        
+        // *****************
+        // *  CREDENTIALS  *
+        // *****************
+        // Saves credentials to a specific location for NPStartup utility.
+        // Nation spaces are converted to +.
+        
+        let fman = FileManager()
+        
+        let libCheck = fman.fileExists(atPath: "") // Check for existing Library folder.
+        if(!libCheck) {
+            let dirurl = URL(string: "Library/Application Support/NoPerish", relativeTo: fman.homeDirectoryForCurrentUser)
+            if(dirurl == nil) {
+                let alert = NSAlert()
+                alert.messageText = "Error"
+                alert.informativeText = "Failed to create NoPerish Library URL object."
+                alert.alertStyle = .critical
+                alert.addButton(withTitle: "OK")
+                alert.runModal()
+                return
+            }
+            
+            do {
+                try fman.createDirectory(at: dirurl!, withIntermediateDirectories: false) // Create the directory.
+            } catch {
+                let alert = NSAlert()
+                alert.messageText = "Error"
+                alert.informativeText = "Failed to create NoPerish Library folder."
+                alert.alertStyle = .critical
+                alert.addButton(withTitle: "OK")
+                alert.runModal()
+                return
+            }
+        }
+        
+        let nationFmtd = nation.replacingOccurrences(of: " ", with: "+")
+        
+        let credsFilePath = fman.homeDirectoryForCurrentUser.path + "/Library/Application Support/NoPerish/credentials.conf"
+        let writer = fman.createFile(atPath: credsFilePath, contents: "\(nationFmtd) \(password)".data(using: .utf8))
+        if(!writer) {
+            let alert = NSAlert()
+            alert.messageText = "Error"
+            alert.informativeText = "Failed to write credentials to file."
+            alert.alertStyle = .critical
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+            return
+        }
+        
+        // Writer being true assumes everything is fine.
+        
+        // *************
+        // *  UTILITY  *
+        // *************
+        // Writes utility to the same library folder as before.
+        // Enables utility for login using SMJobBless
+        
+        
+        
+        
+        
     }
 
 }
