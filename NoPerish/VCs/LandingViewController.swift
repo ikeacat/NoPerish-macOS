@@ -85,6 +85,20 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
         presentAsSheet(crView!)
     }
     
+    func credentialsFailed(_ viewController: CredentialEntranceViewController, description: String, error: Error?) {
+        if(error != nil) {
+            let alert = NSAlert(error: error!)
+            alert.runModal()
+        } else {
+            let alert = NSAlert()
+            alert.messageText = "Fatal error"
+            alert.informativeText = description
+            alert.alertStyle = .critical
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+        }
+    }
+    
     func credentialsFinished(_ viewController: CredentialEntranceViewController, nation: String, password: String, alreadyVerified: Bool) {
         
         // *********************
