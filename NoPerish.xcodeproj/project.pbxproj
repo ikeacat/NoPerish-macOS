@@ -35,6 +35,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		93148534285125D1006AE36E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9314B521282B38600009345E /* NoPerish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoPerish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9314B524282B38600009345E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9314B526282B38600009345E /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 		9314B518282B38600009345E = {
 			isa = PBXGroup;
 			children = (
+				93148534285125D1006AE36E /* README.md */,
 				935ADA4F282F4C7000FA8132 /* LICENSE */,
 				9314B523282B38600009345E /* NoPerish */,
 				937169AF284F936000D1CE73 /* NPStartup */,
