@@ -27,6 +27,7 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
         let title = NSTextField(labelWithString: "NoPerish for macOS")
         title.font = .systemFont(ofSize: 40, weight: .bold)
         title.translatesAutoresizingMaskIntoConstraints = false
+        title.textColor = .init(named: "NPTextColor")
         
         let versionCapt = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Some version"
         
@@ -53,9 +54,8 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
         changeCredentials.translatesAutoresizingMaskIntoConstraints = false
         changeCredentials.isEnabled = false
         
-        let uninstall = NSButton(title: "Uninstall", target: nil, action: nil)
+        let uninstall = NSButton(title: "Uninstall", target: nil, action: #selector(toUninstall(_:)))
         uninstall.translatesAutoresizingMaskIntoConstraints = false
-        uninstall.isEnabled = false
         
         let install = NSButton(title: "Install", target: nil, action: #selector(toInstall(_:)))
         install.translatesAutoresizingMaskIntoConstraints = false
@@ -83,6 +83,11 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
         crView!.delegate = self
         crView!.upperTitle = "Install"
         presentAsSheet(crView!)
+    }
+    
+    @objc func toUninstall(_ sender: Any?) {
+        let uninstall = UninstallViewController()
+        presentAsSheet(uninstall)
     }
     
     func credentialsFailed(_ viewController: CredentialEntranceViewController, description: String, error: Error?) {

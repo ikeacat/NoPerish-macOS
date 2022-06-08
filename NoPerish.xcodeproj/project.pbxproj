@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93148536285128DB006AE36E /* UninstallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93148535285128DB006AE36E /* UninstallViewController.swift */; };
 		9314B525282B38600009345E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9314B524282B38600009345E /* AppDelegate.swift */; };
 		9314B527282B38600009345E /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9314B526282B38600009345E /* LandingViewController.swift */; };
 		9314B529282B38620009345E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9314B528282B38620009345E /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		93148534285125D1006AE36E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		93148535285128DB006AE36E /* UninstallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UninstallViewController.swift; sourceTree = "<group>"; };
 		9314B521282B38600009345E /* NoPerish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoPerish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9314B524282B38600009345E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9314B526282B38600009345E /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				93C42A39282C7C0F00130186 /* CredentialsView+Delegate.swift */,
 				9314B526282B38600009345E /* LandingViewController.swift */,
+				93148535285128DB006AE36E /* UninstallViewController.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9314B527282B38600009345E /* LandingViewController.swift in Sources */,
+				93148536285128DB006AE36E /* UninstallViewController.swift in Sources */,
 				93C42A3A282C7C0F00130186 /* CredentialsView+Delegate.swift in Sources */,
 				9314B525282B38600009345E /* AppDelegate.swift in Sources */,
 				93C42A37282C783700130186 /* AppMenu.swift in Sources */,
