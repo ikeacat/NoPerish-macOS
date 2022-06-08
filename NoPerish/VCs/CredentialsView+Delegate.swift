@@ -88,7 +88,6 @@ class CredentialEntranceViewController: NSViewController {
         passwordField.isEnabled = false
         
         if(nationField.stringValue.isEmpty || passwordField.stringValue.isEmpty) {
-            NSLog("empty.")
             print(nationField.stringValue)
             print(passwordField.stringValue)
             nationField.backgroundColor = .red
@@ -124,7 +123,7 @@ class CredentialEntranceViewController: NSViewController {
         
         let session = URLSession.shared.dataTask(with: request) { data, response, error in
             if(error != nil) {
-                self.delegate?.credentialsFailed(self, error: error)
+                self.delegate?.credentialsFailed(self, description: "An error occured.", error: error)
                 return;
             }
             
@@ -146,11 +145,10 @@ class CredentialEntranceViewController: NSViewController {
                         self.delegate?.credentialsFinished(self, nation: self.nationField.stringValue, password: autologin!, alreadyVerified: true)
                     }
                 } else {
-                    NSLog("http response for verifyCredentials was not 200. (Not OK!!!) (was \(htresp!.statusCode)")
-                    self.delegate?.credentialsFailed(self, error: nil)
+                    self.delegate?.credentialsFailed(self, description: "HTTP response while verifying credentials was not 200. (was \(htresp!.statusCode))", error: nil)
                 }
             } else {
-                self.delegate?.credentialsFailed(self, error: nil)
+                self.delegate?.credentialsFailed(self, description: "Failed to convert response parameter to HTTPURLResponse object.", error: nil)
             }
         }
         
@@ -169,12 +167,12 @@ protocol CredentialEntranceDelegate {
     func credentialsFinished(_ viewController: CredentialEntranceViewController, nation: String, password: String, alreadyVerified: Bool) // REQUIRED
     
     // Called every time credential verify failed. This will never be used if shouldDoServerAuthenticationInViewController is false, thus it's optional. Also has an error field if it failed because of an error check.
-    func credentialsFailed(_ viewController: CredentialEntranceViewController, error: Error?) // Optional, default empty.
+    func credentialsFailed(_ viewController: CredentialEntranceViewController, description: String, error: Error?) // Optional, default empty.
     
     func shouldDoServerAuthenticationInViewController(_ viewController: CredentialEntranceViewController) -> Bool // default: true
 }
 
 extension CredentialEntranceDelegate {
-    func credentialsFailed(_ viewController: CredentialEntranceViewController, error: Error?) {}
+    func credentialsFailed(_ viewController: CredentialEntranceViewController, description: String, error: Error?) {}
     func shouldDoServerAuthenticationInViewController(_ viewController: CredentialEntranceViewController) -> Bool {return true}
 }
