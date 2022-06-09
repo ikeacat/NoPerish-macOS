@@ -192,7 +192,7 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
             if(submitJob) {
                 let alert = NSAlert()
                 alert.informativeText = "🎉 Successfully installed 🎉 (F.Y.I: The Startup app may pop up with an error 'HTTP Status code was not 200 (Was 409)', this is normal.)"
-                alert.alertStyle = .critical
+                alert.alertStyle = .informational
                 alert.messageText = "Success!"
                 alert.addButton(withTitle: "OK")
                 alert.runModal()

@@ -11,7 +11,7 @@ import Foundation
 
 // MARK: View Controller
 
-class CredentialEntranceViewController: NSViewController {
+class CredentialEntranceViewController: NSViewController, NSTextFieldDelegate {
     
     var delegate: CredentialEntranceDelegate?
     var upperTitle: String = "Setup"
@@ -41,13 +41,13 @@ class CredentialEntranceViewController: NSViewController {
         passwordField = NSSecureTextField()
         passwordField.placeholderString = "Password"
         passwordField.translatesAutoresizingMaskIntoConstraints = false
-        passwordField.contentType = .password
+        passwordField.delegate = self
         
         submit = NSButton(title: "Submit", target: nil, action: #selector(hitSubmit(_:)))
         submit.translatesAutoresizingMaskIntoConstraints = false
         submit.bezelColor = NSColor.systemBlue
         
-        cancel = NSButton(title: "Cancel", target: nil, action: nil)
+        cancel = NSButton(title: "Cancel", target: nil, action: #selector(cancelEntrance(_:)))
         cancel.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(upperTitle)
@@ -78,6 +78,10 @@ class CredentialEntranceViewController: NSViewController {
             cancel.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor)
             
         ])
+    }
+    
+    @objc func cancelEntrance(_ sender: Any?) {
+        dismiss(self)
     }
     
     @objc func hitSubmit(_ sender: Any?) {
