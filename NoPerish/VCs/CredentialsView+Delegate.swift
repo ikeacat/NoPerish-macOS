@@ -92,8 +92,6 @@ class CredentialEntranceViewController: NSViewController, NSTextFieldDelegate {
         passwordField.isEnabled = false
         
         if(nationField.stringValue.isEmpty || passwordField.stringValue.isEmpty) {
-            print(nationField.stringValue)
-            print(passwordField.stringValue)
             nationField.backgroundColor = .red
             passwordField.backgroundColor = .red
             submit.isEnabled = true

@@ -147,7 +147,6 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
         
         let fman = FileManager()
         
-        print(fman.homeDirectoryForCurrentUser.path)
         let libCheck = fman.fileExists(atPath: "\(fman.homeDirectoryForCurrentUser.path)/Library/Application Support/NoPerish") // Check for existing Library folder.
         if(!libCheck) {
             let dirurl = URL(fileURLWithPath: "\(fman.homeDirectoryForCurrentUser.path)/Library/Application Support/NoPerish")
