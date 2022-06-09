@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  mainMenu.swift
 //  NoPerish
 //
 //  The project, NoPerish, which includes and is not limited to this source code file is licensed under the GNU General Public License v3.0
@@ -8,10 +8,13 @@
 
 import AppKit
 
-let delegate = AppDelegate()
-var menuBar = AppMenu()
-
-NSApplication.shared.mainMenu = menuBar
-NSApplication.shared.delegate = delegate
-
-_ = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
+class AppMenu: NSMenu {
+    
+    override init(title: String) {
+        super.init(title: title)
+    }
+    
+    required init(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+}

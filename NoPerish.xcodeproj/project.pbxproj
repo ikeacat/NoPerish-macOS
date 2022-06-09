@@ -14,10 +14,11 @@
 		9314B534282B38850009345E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9314B533282B38850009345E /* main.swift */; };
 		93329E14284F949C0063BC38 /* NPStartup.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 937169AE284F936000D1CE73 /* NPStartup.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		93448E1528526D4B00D68966 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9314B528282B38620009345E /* Assets.xcassets */; };
+		93448E1728527D2700D68966 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93448E1628527D2700D68966 /* MainMenu.xib */; };
+		93448E1B2852802900D68966 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93448E1A2852802900D68966 /* MainMenu.swift */; };
 		934AA6D6284F986F00159B47 /* PingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934AA6D5284F986F00159B47 /* PingViewController.swift */; };
 		934AA6D8284F98E400159B47 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934AA6D7284F98E400159B47 /* main.swift */; };
 		937169B1284F936000D1CE73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937169B0284F936000D1CE73 /* AppDelegate.swift */; };
-		93C42A37282C783700130186 /* AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C42A36282C783700130186 /* AppMenu.swift */; };
 		93C42A3A282C7C0F00130186 /* CredentialsView+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C42A39282C7C0F00130186 /* CredentialsView+Delegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,13 +45,14 @@
 		9314B52D282B38620009345E /* NoPerish.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoPerish.entitlements; sourceTree = "<group>"; };
 		9314B533282B38850009345E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		93329E13284F93B40063BC38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		93448E1628527D2700D68966 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		93448E1A2852802900D68966 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		934AA6D5284F986F00159B47 /* PingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingViewController.swift; sourceTree = "<group>"; };
 		934AA6D7284F98E400159B47 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		935ADA4F282F4C7000FA8132 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		937169AE284F936000D1CE73 /* NPStartup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NPStartup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		937169B0284F936000D1CE73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		937169B9284F936100D1CE73 /* NPStartup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NPStartup.entitlements; sourceTree = "<group>"; };
-		93C42A36282C783700130186 /* AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenu.swift; sourceTree = "<group>"; };
 		93C42A39282C7C0F00130186 /* CredentialsView+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CredentialsView+Delegate.swift"; sourceTree = "<group>"; };
 		93DA99C6284EDEC80077E199 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,7 +102,8 @@
 				93C42A38282C7BF300130186 /* VCs */,
 				9314B524282B38600009345E /* AppDelegate.swift */,
 				9314B533282B38850009345E /* main.swift */,
-				93C42A36282C783700130186 /* AppMenu.swift */,
+				93448E1628527D2700D68966 /* MainMenu.xib */,
+				93448E1A2852802900D68966 /* MainMenu.swift */,
 				9314B528282B38620009345E /* Assets.xcassets */,
 				9314B52D282B38620009345E /* NoPerish.entitlements */,
 			);
@@ -210,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9314B529282B38620009345E /* Assets.xcassets in Resources */,
+				93448E1728527D2700D68966 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,10 +233,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9314B527282B38600009345E /* LandingViewController.swift in Sources */,
+				93448E1B2852802900D68966 /* MainMenu.swift in Sources */,
 				93148536285128DB006AE36E /* UninstallViewController.swift in Sources */,
 				93C42A3A282C7C0F00130186 /* CredentialsView+Delegate.swift in Sources */,
 				9314B525282B38600009345E /* AppDelegate.swift in Sources */,
-				93C42A37282C783700130186 /* AppMenu.swift in Sources */,
 				9314B534282B38850009345E /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
