@@ -12,6 +12,7 @@ import ServiceManagement
 class LandingViewController: NSViewController, CredentialEntranceDelegate {
     
     var crView: CredentialEntranceViewController?
+    var type: AwaitingCredentialType = .install
     
     override func loadView() {
         view = NSView(frame: CGRect(x: 0, y: 0, width: 600, height: 300))
@@ -50,9 +51,8 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
         // *  Bottom buttons  *
         // ********************
         
-        let changeCredentials = NSButton(title: "Change Credentials", target: nil, action: nil)
+        let changeCredentials = NSButton(title: "Change Credentials", target: nil, action: #selector(toChangeCredentials(_:)))
         changeCredentials.translatesAutoresizingMaskIntoConstraints = false
-        changeCredentials.isEnabled = false
         
         let uninstall = NSButton(title: "Uninstall", target: nil, action: #selector(toUninstall(_:)))
         uninstall.translatesAutoresizingMaskIntoConstraints = false
@@ -82,12 +82,21 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
         crView = CredentialEntranceViewController()
         crView!.delegate = self
         crView!.upperTitle = "Install"
+        type = .install
         presentAsSheet(crView!)
     }
     
     @objc func toUninstall(_ sender: Any?) {
         let uninstall = UninstallViewController()
         presentAsSheet(uninstall)
+    }
+    
+    @objc func toChangeCredentials(_ sender: Any?) {
+        crView = CredentialEntranceViewController()
+        crView!.delegate = self
+        crView!.upperTitle = "Change"
+        type = .change
+        presentAsSheet(crView!)
     }
     
     func credentialsFailed(_ viewController: CredentialEntranceViewController, description: String, error: Error?) {
@@ -172,30 +181,44 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
         
         // Writer being true assumes everything is fine.
         
-        // *************
-        // *  UTILITY  *
-        // *************
-        // Enables Utility as login item.
+        if(type == .install) {
         
-        let submitJob = SMLoginItemSetEnabled("eu.masonfrykman.NPStartup" as CFString, true)
-        if(submitJob) {
+            // *************
+            // *  UTILITY  *
+            // *************
+            // Enables Utility as login item.
+            
+            let submitJob = SMLoginItemSetEnabled("eu.masonfrykman.NPStartup" as CFString, true)
+            if(submitJob) {
+                let alert = NSAlert()
+                alert.informativeText = "🎉 Successfully installed 🎉 (F.Y.I: The Startup app may pop up with an error 'HTTP Status code was not 200 (Was 409)', this is normal.)"
+                alert.alertStyle = .critical
+                alert.messageText = "Success!"
+                alert.addButton(withTitle: "OK")
+                alert.runModal()
+                return
+            } else {
+                let alert = NSAlert()
+                alert.messageText = "Error"
+                alert.informativeText = "Failed to enable utility as login item."
+                alert.alertStyle = .critical
+                alert.addButton(withTitle: "OK")
+                alert.runModal()
+                return
+            }
+        } else if(type == .change) {
             let alert = NSAlert()
-            alert.messageText = "Success!"
-            alert.informativeText = "Successfully installed NoPerish!!! (F.Y.I: The Startup app may pop up with an error 'HTTP Status code was not 200 (Was 409)', this is normal.)"
+            alert.informativeText = "🎉 Successfully swapped credentials 🎉"
             alert.alertStyle = .informational
+            alert.messageText = "Success!"
             alert.addButton(withTitle: "OK")
             alert.runModal()
-            return
-        } else {
-            let alert = NSAlert()
-            alert.messageText = "Error"
-            alert.informativeText = "Failed to enable utility as login item."
-            alert.alertStyle = .critical
-            alert.addButton(withTitle: "OK")
-            alert.runModal()
-            return
         }
     }
 
 }
 
+enum AwaitingCredentialType {
+    case install
+    case change
+}
