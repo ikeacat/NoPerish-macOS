@@ -13,10 +13,10 @@
 		9314B529282B38620009345E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9314B528282B38620009345E /* Assets.xcassets */; };
 		9314B534282B38850009345E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9314B533282B38850009345E /* main.swift */; };
 		93329E14284F949C0063BC38 /* NPStartup.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 937169AE284F936000D1CE73 /* NPStartup.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		93448E1528526D4B00D68966 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9314B528282B38620009345E /* Assets.xcassets */; };
 		934AA6D6284F986F00159B47 /* PingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934AA6D5284F986F00159B47 /* PingViewController.swift */; };
 		934AA6D8284F98E400159B47 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934AA6D7284F98E400159B47 /* main.swift */; };
 		937169B1284F936000D1CE73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937169B0284F936000D1CE73 /* AppDelegate.swift */; };
-		937169B5284F936100D1CE73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 937169B4284F936100D1CE73 /* Assets.xcassets */; };
 		93C42A37282C783700130186 /* AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C42A36282C783700130186 /* AppMenu.swift */; };
 		93C42A3A282C7C0F00130186 /* CredentialsView+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C42A39282C7C0F00130186 /* CredentialsView+Delegate.swift */; };
 /* End PBXBuildFile section */
@@ -49,7 +49,6 @@
 		935ADA4F282F4C7000FA8132 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		937169AE284F936000D1CE73 /* NPStartup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NPStartup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		937169B0284F936000D1CE73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		937169B4284F936100D1CE73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		937169B9284F936100D1CE73 /* NPStartup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NPStartup.entitlements; sourceTree = "<group>"; };
 		93C42A36282C783700130186 /* AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenu.swift; sourceTree = "<group>"; };
 		93C42A39282C7C0F00130186 /* CredentialsView+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CredentialsView+Delegate.swift"; sourceTree = "<group>"; };
@@ -115,7 +114,6 @@
 				937169B0284F936000D1CE73 /* AppDelegate.swift */,
 				934AA6D5284F986F00159B47 /* PingViewController.swift */,
 				934AA6D7284F98E400159B47 /* main.swift */,
-				937169B4284F936100D1CE73 /* Assets.xcassets */,
 				937169B9284F936100D1CE73 /* NPStartup.entitlements */,
 			);
 			path = NPStartup;
@@ -219,7 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				937169B5284F936100D1CE73 /* Assets.xcassets in Resources */,
+				93448E1528526D4B00D68966 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
