@@ -88,8 +88,10 @@ class CredentialEntranceViewController: NSViewController, NSTextFieldDelegate {
         // Disable all fields.
         submit.isEnabled = false
         cancel.isEnabled = false
-        nationField.isEnabled = false
-        passwordField.isEnabled = false
+        //nationField.isEnabled = false
+        //passwordField.isEnabled = false
+        
+        // Disabling the text fields was causing the actively-edited one to be cleared on button press.
         
         if(nationField.stringValue.isEmpty || passwordField.stringValue.isEmpty) {
             nationField.backgroundColor = .red
