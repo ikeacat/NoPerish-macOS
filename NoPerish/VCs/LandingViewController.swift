@@ -102,6 +102,7 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
     func credentialsFailed(_ viewController: CredentialEntranceViewController, description: String, error: Error?) {
         if(error != nil) {
             let alert = NSAlert(error: error!)
+            alert.alertStyle = .critical
             alert.runModal()
         } else {
             let alert = NSAlert()

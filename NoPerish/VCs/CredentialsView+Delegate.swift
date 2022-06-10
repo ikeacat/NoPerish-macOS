@@ -115,7 +115,12 @@ class CredentialEntranceViewController: NSViewController, NSTextFieldDelegate {
     func verifyCredentials() {
         let url = URL(string: "https://www.nationstates.net/cgi-bin/api.cgi")
         if(url == nil) {
-            // TODO: Handle URL failure.
+            let alert = NSAlert()
+            alert.messageText = "Error"
+            alert.informativeText = "Failed to create URL from string."
+            alert.alertStyle = .critical
+            alert.addButton(withTitle: "Ok")
+            alert.runModal()
         }
         var request = URLRequest(url: url!)
         request.addValue(passwordField.stringValue, forHTTPHeaderField: "X-Password")
