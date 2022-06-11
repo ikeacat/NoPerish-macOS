@@ -12,6 +12,8 @@
 		9314B527282B38600009345E /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9314B526282B38600009345E /* LandingViewController.swift */; };
 		9314B529282B38620009345E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9314B528282B38620009345E /* Assets.xcassets */; };
 		9314B534282B38850009345E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9314B533282B38850009345E /* main.swift */; };
+		93328BA92854BE8100331EA5 /* GitHub-Mark-Light-32px.png in Resources */ = {isa = PBXBuildFile; fileRef = 93328BA82854BE8100331EA5 /* GitHub-Mark-Light-32px.png */; };
+		93328BAD2854C12E00331EA5 /* GitHub-Mark-Dark-32px.png in Resources */ = {isa = PBXBuildFile; fileRef = 93328BAC2854C12E00331EA5 /* GitHub-Mark-Dark-32px.png */; };
 		93329E14284F949C0063BC38 /* NPStartup.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 937169AE284F936000D1CE73 /* NPStartup.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		93448E1528526D4B00D68966 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9314B528282B38620009345E /* Assets.xcassets */; };
 		93448E1728527D2700D68966 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93448E1628527D2700D68966 /* MainMenu.xib */; };
@@ -44,6 +46,8 @@
 		9314B528282B38620009345E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9314B52D282B38620009345E /* NoPerish.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoPerish.entitlements; sourceTree = "<group>"; };
 		9314B533282B38850009345E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		93328BA82854BE8100331EA5 /* GitHub-Mark-Light-32px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GitHub-Mark-Light-32px.png"; sourceTree = "<group>"; };
+		93328BAC2854C12E00331EA5 /* GitHub-Mark-Dark-32px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GitHub-Mark-Dark-32px.png"; sourceTree = "<group>"; };
 		93329E13284F93B40063BC38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		93448E1628527D2700D68966 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		93448E1A2852802900D68966 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 		9314B523282B38600009345E /* NoPerish */ = {
 			isa = PBXGroup;
 			children = (
+				93328BA72854BE6B00331EA5 /* Images */,
 				93DA99C6284EDEC80077E199 /* Info.plist */,
 				93C42A38282C7BF300130186 /* VCs */,
 				9314B524282B38600009345E /* AppDelegate.swift */,
@@ -108,6 +113,15 @@
 				9314B52D282B38620009345E /* NoPerish.entitlements */,
 			);
 			path = NoPerish;
+			sourceTree = "<group>";
+		};
+		93328BA72854BE6B00331EA5 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				93328BAC2854C12E00331EA5 /* GitHub-Mark-Dark-32px.png */,
+				93328BA82854BE8100331EA5 /* GitHub-Mark-Light-32px.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		937169AF284F936000D1CE73 /* NPStartup */ = {
@@ -213,7 +227,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9314B529282B38620009345E /* Assets.xcassets in Resources */,
+				93328BA92854BE8100331EA5 /* GitHub-Mark-Light-32px.png in Resources */,
 				93448E1728527D2700D68966 /* MainMenu.xib in Resources */,
+				93328BAD2854C12E00331EA5 /* GitHub-Mark-Dark-32px.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

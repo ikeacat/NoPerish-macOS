@@ -14,6 +14,8 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
     var crView: CredentialEntranceViewController?
     var type: AwaitingCredentialType = .install
     
+    var ghMark: NSButton!
+    
     override func loadView() {
         view = NSView(frame: CGRect(x: 0, y: 0, width: 600, height: 300))
     }
@@ -64,6 +66,26 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
         view.addSubview(uninstall)
         view.addSubview(install)
         
+        // *****************
+        // *  GITHUB MARK  *
+        // *****************
+        
+        let interfaceStyle = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
+        let ghImage = NSImage(named: "GitHub-Mark-\(interfaceStyle)-32px")
+        if(ghImage != nil) {
+            ghMark = NSButton(image: ghImage!, target: nil, action: #selector(toGithubExternal(_:)))
+            ghMark.translatesAutoresizingMaskIntoConstraints = false
+            ghMark.isBordered = false
+            
+            view.addSubview(ghMark)
+            
+            NSLayoutConstraint.activate([
+                ghMark.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
+                ghMark.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
+            ])
+        }
+        
+        
         NSLayoutConstraint.activate([
             changeCredentials.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
             changeCredentials.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
@@ -75,7 +97,27 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
             install.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
         ])
         
+        // Switch github icon on dark/light switch.
+        DistributedNotificationCenter.default().addObserver(self, selector: #selector(repushGithubMark(sender:)), name: NSNotification.Name(rawValue: "AppleInterfaceThemeChangedNotification"), object: nil)
+    }
+    
+    @objc func repushGithubMark(sender: NSNotification) {
+        ghMark.removeFromSuperview()
         
+        let interfaceStyle = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
+        let ghImage = NSImage(named: "GitHub-Mark-\(interfaceStyle)-32px")
+        if(ghImage != nil) {
+            ghMark = NSButton(image: ghImage!, target: nil, action: #selector(toGithubExternal(_:)))
+            ghMark.translatesAutoresizingMaskIntoConstraints = false
+            ghMark.isBordered = false
+            
+            view.addSubview(ghMark)
+            
+            NSLayoutConstraint.activate([
+                ghMark.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
+                ghMark.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
+            ])
+        }
     }
     
     @objc func toInstall(_ sender: Any) {
@@ -97,6 +139,11 @@ class LandingViewController: NSViewController, CredentialEntranceDelegate {
         crView!.upperTitle = "Change"
         type = .change
         presentAsSheet(crView!)
+    }
+    
+    @objc func toGithubExternal(_ sender: Any?) {
+        let url = URL(string: "https://www.github.com/ikeacat/NoPerish-macOS")!
+        NSWorkspace.shared.open(url)
     }
     
     func credentialsFailed(_ viewController: CredentialEntranceViewController, description: String, error: Error?) {
