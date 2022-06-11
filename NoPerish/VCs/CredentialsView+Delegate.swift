@@ -132,7 +132,9 @@ class CredentialEntranceViewController: NSViewController, NSTextFieldDelegate {
         
         let session = URLSession.shared.dataTask(with: request) { data, response, error in
             if(error != nil) {
-                self.delegate?.credentialsFailed(self, description: "An error occured.", error: error)
+                DispatchQueue.main.async {
+                    self.delegate?.credentialsFailed(self, description: "An error occured.", error: error)
+                }
                 return;
             }
             

@@ -56,9 +56,9 @@
 		935ADA4F282F4C7000FA8132 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		937169AE284F936000D1CE73 /* NPStartup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NPStartup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		937169B0284F936000D1CE73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		937169B9284F936100D1CE73 /* NPStartup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NPStartup.entitlements; sourceTree = "<group>"; };
 		93C42A39282C7C0F00130186 /* CredentialsView+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CredentialsView+Delegate.swift"; sourceTree = "<group>"; };
 		93DA99C6284EDEC80077E199 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		93F270182854C49800EE1E2B /* NPStartup.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NPStartup.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,11 +127,11 @@
 		937169AF284F936000D1CE73 /* NPStartup */ = {
 			isa = PBXGroup;
 			children = (
+				93F270182854C49800EE1E2B /* NPStartup.entitlements */,
 				93329E13284F93B40063BC38 /* Info.plist */,
 				937169B0284F936000D1CE73 /* AppDelegate.swift */,
 				934AA6D5284F986F00159B47 /* PingViewController.swift */,
 				934AA6D7284F98E400159B47 /* main.swift */,
-				937169B9284F936100D1CE73 /* NPStartup.entitlements */,
 			);
 			path = NPStartup;
 			sourceTree = "<group>";
@@ -470,6 +470,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.masonfrykman.NPStartup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -501,6 +502,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.masonfrykman.NPStartup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
