@@ -156,10 +156,14 @@ class CredentialEntranceViewController: NSViewController, NSTextFieldDelegate {
                         self.delegate?.credentialsFinished(self, nation: self.nationField.stringValue, password: autologin!, alreadyVerified: true)
                     }
                 } else {
-                    self.delegate?.credentialsFailed(self, description: "HTTP response while verifying credentials was not 200. (was \(htresp!.statusCode))", error: nil)
+                    DispatchQueue.main.async {
+                        self.delegate?.credentialsFailed(self, description: "HTTP response while verifying credentials was not 200. (was \(htresp!.statusCode))", error: nil)
+                    }
                 }
             } else {
-                self.delegate?.credentialsFailed(self, description: "Failed to convert response parameter to HTTPURLResponse object.", error: nil)
+                DispatchQueue.main.async {
+                    self.delegate?.credentialsFailed(self, description: "Failed to convert response parameter to HTTPURLResponse object.", error: nil)
+                }
             }
         }
         
