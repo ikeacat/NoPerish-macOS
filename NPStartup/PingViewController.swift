@@ -47,10 +47,10 @@ class PingViewController: NSViewController {
         ])
         
         pingingPV.startAnimation(nil)
-        ping(nil)
+        ping()
     }
     
-    func ping(_ sender: Any?) {
+    func ping() {
         // MARK: Credentials
         
         let fman = FileManager()
@@ -196,7 +196,7 @@ class PingViewController: NSViewController {
         
         pingingPV.startAnimation(nil)
         
-        ping(nil)
+        ping()
     }
     
     @objc func exitApp(_ sender: Any?) {
